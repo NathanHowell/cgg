@@ -313,7 +313,7 @@ source files
 │  cgg-walk      file discovery (.gitignore, deny-list)     │
 ├───────────────────────────────────────────────────────────┤
 │  cgg-lang      tree-sitter parse → extract callables      │
-│                44 language plugins (+ .ipynb notebooks)   │
+│                45 language plugins (+ .ipynb notebooks)   │
 ├───────────────────────────────────────────────────────────┤
 │  cgg-resolve   link calls to definitions                  │
 │                ├── type propagation (params, locals,      │
@@ -449,7 +449,7 @@ confirm caller/callee impact. Grep finds string matches; `cgg` finds
 resolved calls — including method dispatch and cross-file edges that
 grep will miss or over-match.
 
-## Supported languages (44)
+## Supported languages (45)
 
 The last five are interface/descriptor languages: cgg maps their shape
 graphs onto the call-graph model, so an API model renders as a topology of
@@ -496,6 +496,7 @@ through the Python plugin (`!`, `%`, `?` magics stripped automatically).
 | PowerShell | Import-Module, dot-source, using | — | Cmdlets, classes, filters |
 | Solidity | import "./X.sol" | — | Contracts, libraries, modifiers |
 | F# | open | — | let bindings, members, type defs |
+| Lean 4 | import, open | — | def/theorem/abbrev/instance, structures/inductives, tactic lemma refs; macro/typeclass edges need the kernel |
 | Starlark | load("//path:f.bzl", …) | — | def/call/attribute; Bazel/Buck/Pants |
 | CMake | include(), add_subdirectory() | — | function()/macro()/normal commands |
 | Nix | import &lt;path&gt; | — | function-valued bindings, apply expressions |
@@ -510,7 +511,7 @@ through the Python plugin (`!`, `%`, `?` magics stripped automatically).
 
 ## Self-analysis
 
-`cgg` run on its own source <!-- cgg:begin:self-stats -->(2088 callables, 4963 edges, 1785 cross-file, 119ms)<!-- cgg:end:self-stats -->. This is the 1-hop neighborhood of `cgg::analyze_in_pool`, the pipeline <!-- markdownlint-disable-line MD013 -->
+`cgg` run on its own source <!-- cgg:begin:self-stats -->(2125 callables, 5070 edges, 1789 cross-file, 123ms)<!-- cgg:end:self-stats -->. This is the 1-hop neighborhood of `cgg::analyze_in_pool`, the pipeline <!-- markdownlint-disable-line MD013 -->
 body — every edge is a real cross-crate function call, and the fan-out is
 the resolver ordering described under [How it works](#how-it-works):
 

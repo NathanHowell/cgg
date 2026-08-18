@@ -23,6 +23,7 @@ pub mod java;
 pub mod javascript;
 pub mod julia;
 pub mod kotlin;
+pub mod lean;
 pub mod lua;
 pub mod nix;
 pub mod objc;
@@ -149,6 +150,7 @@ pub fn register_all(reg: &mut PluginRegistry) {
     reg.register(Box::new(graphql::GraphqlPlugin));
     reg.register(Box::new(openapi::OpenApiPlugin));
     reg.register(Box::new(asyncapi::AsyncApiPlugin));
+    reg.register(Box::new(lean::LeanPlugin));
 }
 
 #[cfg(test)]

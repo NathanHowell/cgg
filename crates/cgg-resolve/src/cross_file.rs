@@ -848,7 +848,7 @@ pub fn resolve(graph: &Graph, facts: &[FileFacts], fanout_cap: usize) -> CrossFi
                             // Haskell / Erlang / Elixir / generic: dotted module name,
                             // unqualified import.
                             "haskell" | "erlang" | "elixir" | "fsharp" | "ocaml"
-                            | "julia" => {
+                            | "julia" | "lean" => {
                                 unqualified_prefixes.push(path.to_string());
                                 if let Some(last) = path.rsplit('.').next() {
                                     module_aliases
